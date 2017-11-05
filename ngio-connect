@@ -1,0 +1,14 @@
+#!/bin/bash
+# NOTE: Requires 'sshpass'
+# https://io.netgarage.org/ SSH connector
+# Usage: Create a file with the username and put the password inside. Call the script passing the path to file.
+# Ex:
+# 	$ printf "level1" > Documents/level1
+# 	$ ngio-connect Documents/level1
+
+user=$(basename $1)
+pass=$(cat $1)
+echo "User:  '$user'"
+echo "Passw: '$pass'"
+
+sshpass -p $pass ssh "$user@io.netgarage.org"
